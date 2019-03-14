@@ -1,46 +1,49 @@
 "use strict";
-// class ListNode3<T = string> {
-//   next: null | ListNode3<T> = null;
-//   constructor(public val: T) {}
-//   static fromArr<T = string>(arr: T[]) {
-//     let head: null | ListNode3<T> = null;
-//     let current: null | ListNode3<T> = null;
-//     arr.forEach(item => {
-//       if (head) {
-//         current!.next = new ListNode3(item);
-//         current = current!.next;
-//       } else {
-//         head = new ListNode3(item);
-//         current = head;
-//       }
-//     });
-//     return head;
-//   }
-// }
-// console.log(ListNode3.fromArr('pwwkew'.split('')));
+/**
+ * {p,w,w,k,e,w}
+ * {[p,w,w],k,e,w} =>  是否有重复 true
+ * {p,[w,w,k],e,w} =>  是否有重复 true
+ * {p,w,[w,k,e],w} =>  是否有重复 false  增加 窗口大小 判断窗口游标是否比数组length还大  是 返回上次结果
+ * {p,w,[w,k,e,w]} =>  是否有重复 true  增加 窗口大小  判断窗口游标是否比数组length还大  是 返回上次结果
+ */
+/**
+ * {d,v,d,f}
+ * {[d,v,d],f}  => 是否有重复 true
+ * {d,[v,d,f]}  => 是否有重复 false 增加 窗口大小  判断窗口游标是否比数组length还大  是 返回上次结果
+ */
 /**
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function (s) {
-    const arr = s.split('');
-    const { length } = arr;
-    const countMap = new Map();
-    const nonRepeatingArr = [...new Set(arr)];
-    if (nonRepeatingArr.length <= 2)
-        return nonRepeatingArr.length;
-    for (let i = 0; i < length; i++) {
-        for (let j = i; j <= length; j++) {
-            const str = s.slice(i, j);
-            if (s.includes(str) && str.length === [...new Set(str)].length) {
-                countMap.set(str, str.length);
-            }
-        }
+var lengthOfLongestSubstring = function(s) {
+  const { length } = s;
+  if (length === 0) return 0;
+  if (length === 1) return 1;
+
+  let youBiaoNumber = 0;
+  let toBiJiaoStr = "";
+  let i = 1;
+  let max = 0;
+
+  while (i <= length) {
+    toBiJiaoStr = s.substring(youBiaoNumber, i);
+    if (toBiJiaoStr.length === [...new Set(toBiJiaoStr.split(""))].length) {
+      i++;
+      if (toBiJiaoStr.length > max) {
+        max = toBiJiaoStr.length;
+      }
+    } else {
+      youBiaoNumber++;
     }
-    return Math.max(...countMap.values());
+  }
+
+  return max;
 };
-// console.log(lengthOfLongestSubstring('pwwkew'));
-// console.log(lengthOfLongestSubstring('pwkew'));
-// console.log(lengthOfLongestSubstring('abcabcbb'));
-// console.log(lengthOfLongestSubstring('abcabcbbd'));
-console.log(lengthOfLongestSubstring('dvdf'));
+
+console.log(lengthOfLongestSubstring("dvdf")); // 3
+console.log(lengthOfLongestSubstring("pwwkew")); // 3
+console.log(lengthOfLongestSubstring("bbbbbbbb")); // 1
+console.log(lengthOfLongestSubstring("")); // 0
+console.log(lengthOfLongestSubstring("au")); // 2
+console.log(lengthOfLongestSubstring("aab")); // 2
+console.log(lengthOfLongestSubstring("abcabcbb")); // 3
