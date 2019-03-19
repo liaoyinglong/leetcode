@@ -19,6 +19,20 @@
  * @return {number}
  */
 var findComplement = function(num: number) {
-  
-  
+  return parseInt(
+    [...num.toString(2)].map(item => (+item ? 0 : 1)).join(""),
+    2
+  );
 };
+
+// 下面的解法 愣是想不通
+// let findComplement = function(num: number) {
+//   let mask = ~0;
+//   while (num & mask) {
+//     mask <<= 1;
+//   }
+//   return ~mask ^ num;
+// };
+
+console.log(findComplement(5)); // 2
+console.log(findComplement(1)); // 0
