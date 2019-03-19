@@ -1,0 +1,37 @@
+"use strict";
+/**
+ 给定一个 N 叉树，返回其节点值的后序遍历。
+
+ 例如，给定一个 3叉树 :
+           1
+     /     \  \
+   3       2   4
+ /   \
+5     6
+ 返回其后序遍历: [5,6,3,2,4,1].
+ */
+/**
+ * @param {Node} root
+ * @return {number[]}
+ */
+var postorder = function(root) {
+  if (!root) return [];
+  let arr = root.children.reduce((arr, cur) => {
+    return [...arr, ...postorder(cur)];
+  }, []);
+  arr.push(root.val);
+  return arr;
+};
+var node = {
+  children: [
+    {
+      children: [{ children: [], val: 5 }, { children: [], val: 6 }],
+      val: 3
+    },
+    { children: [], val: 2 },
+    { children: [], val: 4 }
+  ],
+  val: 1
+};
+console.log(postorder(node));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7Ozs7R0FVRztBQWFIOzs7R0FHRztBQUNILElBQUksU0FBUyxHQUFHLFVBQVMsSUFBYztJQUNyQyxJQUFJLEdBQUcsR0FBRyxJQUFJLENBQUMsUUFBUSxDQUFDLE1BQU0sQ0FBVyxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRTtRQUNwRCxPQUFPLENBQUMsR0FBRyxHQUFHLEVBQUUsR0FBRyxTQUFTLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQztJQUNyQyxDQUFDLEVBQUUsRUFBRSxDQUFDLENBQUM7SUFDUCxHQUFHLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsQ0FBQztJQUNuQixPQUFPLEdBQUcsQ0FBQztBQUNiLENBQUMsQ0FBQztBQUVGLElBQUksSUFBSSxHQUFHO0lBQ1QsUUFBUSxFQUFFO1FBQ1I7WUFDRSxRQUFRLEVBQUUsQ0FBQyxFQUFFLFFBQVEsRUFBRSxFQUFFLEVBQUUsR0FBRyxFQUFFLENBQUMsRUFBRSxFQUFFLEVBQUUsUUFBUSxFQUFFLEVBQUUsRUFBRSxHQUFHLEVBQUUsQ0FBQyxFQUFFLENBQUM7WUFDOUQsR0FBRyxFQUFFLENBQUM7U0FDUDtRQUNELEVBQUUsUUFBUSxFQUFFLEVBQUUsRUFBRSxHQUFHLEVBQUUsQ0FBQyxFQUFFO1FBQ3hCLEVBQUUsUUFBUSxFQUFFLEVBQUUsRUFBRSxHQUFHLEVBQUUsQ0FBQyxFQUFFO0tBQ3pCO0lBQ0QsR0FBRyxFQUFFLENBQUM7Q0FDUCxDQUFDO0FBRUYsT0FBTyxDQUFDLEdBQUcsQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyJ9
