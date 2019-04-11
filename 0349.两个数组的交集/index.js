@@ -1,0 +1,43 @@
+"use strict";
+/**
+ * 给定两个数组，编写一个函数来计算它们的交集。
+
+示例 1:
+
+输入: nums1 = [1,2,2,1], nums2 = [2,2]
+输出: [2]
+示例 2:
+
+输入: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+输出: [9,4]
+说明:
+
+输出结果中的每个元素一定是唯一的。
+我们可以不考虑输出结果的顺序。
+ */
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersection = function (nums1, nums2) {
+    let loopArr;
+    let compareArr;
+    if (nums1.length < nums2.length) {
+        loopArr = nums1;
+        compareArr = nums2;
+    }
+    else {
+        loopArr = nums2;
+        compareArr = nums1;
+    }
+    return loopArr.reduce((arr, cur) => {
+        if (compareArr.includes(cur) && !arr.includes(cur)) {
+            arr.push(cur);
+        }
+        return arr;
+    }, []);
+};
+console.log(intersection([1, 2, 2, 1], [2, 2])); // [2]
+console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4])); // [9,4]
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7Ozs7Ozs7OztHQWVHO0FBSUg7Ozs7R0FJRztBQUNILElBQUksWUFBWSxHQUFHLFVBQVMsS0FBUSxFQUFFLEtBQVE7SUFDNUMsSUFBSSxPQUFVLENBQUM7SUFDZixJQUFJLFVBQWEsQ0FBQztJQUNsQixJQUFJLEtBQUssQ0FBQyxNQUFNLEdBQUcsS0FBSyxDQUFDLE1BQU0sRUFBRTtRQUMvQixPQUFPLEdBQUcsS0FBSyxDQUFDO1FBQ2hCLFVBQVUsR0FBRyxLQUFLLENBQUM7S0FDcEI7U0FBTTtRQUNMLE9BQU8sR0FBRyxLQUFLLENBQUM7UUFDaEIsVUFBVSxHQUFHLEtBQUssQ0FBQztLQUNwQjtJQUVELE9BQU8sT0FBTyxDQUFDLE1BQU0sQ0FBSSxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRTtRQUNwQyxJQUFJLFVBQVUsQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxFQUFFO1lBQ2xELEdBQUcsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLENBQUM7U0FDZjtRQUNELE9BQU8sR0FBRyxDQUFDO0lBQ2IsQ0FBQyxFQUFFLEVBQUUsQ0FBQyxDQUFDO0FBQ1QsQ0FBQyxDQUFDO0FBRUYsT0FBTyxDQUFDLEdBQUcsQ0FBQyxZQUFZLENBQUMsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxNQUFNO0FBQ3ZELE9BQU8sQ0FBQyxHQUFHLENBQUMsWUFBWSxDQUFDLENBQUMsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxRQUFRIn0=
