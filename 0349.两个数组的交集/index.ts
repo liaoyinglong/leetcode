@@ -15,16 +15,16 @@
 我们可以不考虑输出结果的顺序。
  */
 
-type T = number[];
+type T0349 = number[];
 
 /**
  * @param {number[]} nums1
  * @param {number[]} nums2
  * @return {number[]}
  */
-var intersection = function(nums1: T, nums2: T): T {
-  let loopArr: T;
-  let compareArr: T;
+var intersection = function(nums1: T0349, nums2: T0349): T0349 {
+  let loopArr: T0349;
+  let compareArr: T0349;
   if (nums1.length < nums2.length) {
     loopArr = nums1;
     compareArr = nums2;
@@ -33,7 +33,7 @@ var intersection = function(nums1: T, nums2: T): T {
     compareArr = nums1;
   }
 
-  return loopArr.reduce<T>((arr, cur) => {
+  return loopArr.reduce<T0349>((arr, cur) => {
     if (compareArr.includes(cur) && !arr.includes(cur)) {
       arr.push(cur);
     }
