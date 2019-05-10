@@ -33,8 +33,7 @@ var islandPerimeter = function(grid: number[][]): number {
   let isPrevCelltruly = false;
   let prevRow: number[];
 
-  for (let rowIndex = 0; rowIndex < grid.length; rowIndex++) {
-    const curRow = grid[rowIndex];
+  for (const curRow of grid) {
     isPrevCelltruly = false;
     if (curRow.includes(1)) {
       curRow.forEach((cell, index) => {
