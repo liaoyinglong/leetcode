@@ -31,6 +31,11 @@
  */
 
 /**
+ * 1. 将每个字符串按单双分组然后在排序合并
+ * 2. 最后在去重就能得出有多少种
+ */
+
+/**
  * @param {string[]} A
  * @return {number}
  */
@@ -40,23 +45,21 @@ var numSpecialEquivGroups = function(A: string[]): number {
   if (itemLen < 2) {
     return new Set(A).size;
   }
-  // let oddi = 0;
-  // let oddj = 2;
-  // let eveni = 0;
-  // let evenj = 2;
-  // let isChanged = false
-  //
-  // for (let i = 0; i < A.length; i++) {
-  //   let cur = A[i];
-  //   for (let j = i; j < A.length; j++) {
-  //     let next = A[j];
-  //     if()
-  //
-  //
-  //   }
-  // }
+  let arr = A.map(string => {
+    const subset = string.split("").reduce<string[][]>(
+      (acc, cur, index) => {
+        acc[index % 2].push(cur);
+        return acc;
+      },
+      [[], []]
+    );
+    console.log("subset = ", subset);
+    return subset[0].sort().join("") + subset[1].sort().join("");
+  });
+  console.log(arr);
+  let S = new Set(arr);
 
-  return itemLen;
+  return S.size;
 };
 
 console.log(
