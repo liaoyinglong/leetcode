@@ -1,0 +1,63 @@
+"use strict";
+/**
+ * 给定一个非空二叉树, 返回一个由每层节点平均值组成的数组.
+
+示例 1:
+
+输入:
+    3
+   / \
+  9  20
+    /  \
+   15   7
+输出: [3, 14.5, 11]
+解释:
+第0层的平均值是 3,  第1层是 14.5, 第2层是 11. 因此返回 [3, 14.5, 11].
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var averageOfLevels = function (root) {
+    if (!root)
+        return [];
+    const rows = [];
+    const res = [];
+    const rowSums = [];
+    averageOfLevelsHelpers(root, res, rowSums, rows, 0);
+    return res;
+};
+const averageOfLevelsHelpers = (root, res, rowSums, rows = [], level = 0) => {
+    if (rows[level]) {
+        rows[level].push(root.val);
+        rowSums[level] = rowSums[level] + root.val;
+        res[level] = rowSums[level] / rows[level].length;
+    }
+    else {
+        rows[level] = [root.val];
+        rowSums[level] = root.val;
+        res[level] = root.val;
+    }
+    root.left && averageOfLevelsHelpers(root.left, res, rowSums, rows, level + 1);
+    root.right &&
+        averageOfLevelsHelpers(root.right, res, rowSums, rows, level + 1);
+};
+const tree0637 = {
+    val: 3,
+    left: {
+        val: 1,
+        left: null,
+        right: {
+            val: 2,
+            left: null,
+            right: null
+        }
+    },
+    right: {
+        val: 4,
+        left: null,
+        right: null
+    }
+};
+console.log(averageOfLevels(tree0637));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJpbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7Ozs7Ozs7O0dBY0c7QUFPSDs7O0dBR0c7QUFDSCxJQUFJLGVBQWUsR0FBRyxVQUFTLElBQWtCO0lBQy9DLElBQUksQ0FBQyxJQUFJO1FBQUUsT0FBTyxFQUFFLENBQUM7SUFDckIsTUFBTSxJQUFJLEdBQWUsRUFBRSxDQUFDO0lBQzVCLE1BQU0sR0FBRyxHQUFhLEVBQUUsQ0FBQztJQUN6QixNQUFNLE9BQU8sR0FBYSxFQUFFLENBQUM7SUFDN0Isc0JBQXNCLENBQUMsSUFBSSxFQUFFLEdBQUcsRUFBRSxPQUFPLEVBQUUsSUFBSSxFQUFFLENBQUMsQ0FBQyxDQUFDO0lBQ3BELE9BQU8sR0FBRyxDQUFDO0FBQ2IsQ0FBQyxDQUFDO0FBRUYsTUFBTSxzQkFBc0IsR0FBRyxDQUM3QixJQUFrQixFQUNsQixHQUFhLEVBQ2IsT0FBaUIsRUFDakIsT0FBbUIsRUFBRSxFQUNyQixLQUFLLEdBQUcsQ0FBQyxFQUNULEVBQUU7SUFDRixJQUFJLElBQUksQ0FBQyxLQUFLLENBQUMsRUFBRTtRQUNmLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxDQUFDO1FBQzNCLE9BQU8sQ0FBQyxLQUFLLENBQUMsR0FBRyxPQUFPLENBQUMsS0FBSyxDQUFDLEdBQUcsSUFBSSxDQUFDLEdBQUcsQ0FBQztRQUMzQyxHQUFHLENBQUMsS0FBSyxDQUFDLEdBQUcsT0FBTyxDQUFDLEtBQUssQ0FBQyxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQyxNQUFNLENBQUM7S0FDbEQ7U0FBTTtRQUNMLElBQUksQ0FBQyxLQUFLLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsQ0FBQztRQUN6QixPQUFPLENBQUMsS0FBSyxDQUFDLEdBQUcsSUFBSSxDQUFDLEdBQUcsQ0FBQztRQUMxQixHQUFHLENBQUMsS0FBSyxDQUFDLEdBQUcsSUFBSSxDQUFDLEdBQUcsQ0FBQztLQUN2QjtJQUNELElBQUksQ0FBQyxJQUFJLElBQUksc0JBQXNCLENBQUMsSUFBSSxDQUFDLElBQUksRUFBRSxHQUFHLEVBQUUsT0FBTyxFQUFFLElBQUksRUFBRSxLQUFLLEdBQUcsQ0FBQyxDQUFDLENBQUM7SUFDOUUsSUFBSSxDQUFDLEtBQUs7UUFDUixzQkFBc0IsQ0FBQyxJQUFJLENBQUMsS0FBSyxFQUFFLEdBQUcsRUFBRSxPQUFPLEVBQUUsSUFBSSxFQUFFLEtBQUssR0FBRyxDQUFDLENBQUMsQ0FBQztBQUN0RSxDQUFDLENBQUM7QUFFRixNQUFNLFFBQVEsR0FBaUI7SUFDN0IsR0FBRyxFQUFFLENBQUM7SUFDTixJQUFJLEVBQUU7UUFDSixHQUFHLEVBQUUsQ0FBQztRQUNOLElBQUksRUFBRSxJQUFJO1FBQ1YsS0FBSyxFQUFFO1lBQ0wsR0FBRyxFQUFFLENBQUM7WUFDTixJQUFJLEVBQUUsSUFBSTtZQUNWLEtBQUssRUFBRSxJQUFJO1NBQ1o7S0FDRjtJQUNELEtBQUssRUFBRTtRQUNMLEdBQUcsRUFBRSxDQUFDO1FBQ04sSUFBSSxFQUFFLElBQUk7UUFDVixLQUFLLEVBQUUsSUFBSTtLQUNaO0NBQ0YsQ0FBQztBQUVGLE9BQU8sQ0FBQyxHQUFHLENBQUMsZUFBZSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMifQ==
