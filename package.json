@@ -1,0 +1,12 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/liaoyinglong/leetcode.git",
+  "author": "liaoyinglong <vigossliao@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.2"
+  }
+}
