@@ -54,8 +54,8 @@ const getIntersectionNode = function(headA: ListNode0160, headB: ListNode0160) {
   let b: ListNode0160 = headB;
 
   while (a !== b) {
-    a = a ? a.next : headB;
-    b = b ? b.next : headA;
+    a = a ? a.next! : headB;
+    b = b ? b.next! : headA;
   }
 
   return a;
