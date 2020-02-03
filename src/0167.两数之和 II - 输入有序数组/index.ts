@@ -39,6 +39,21 @@ const twoSum = function(numbers: number[], target: number) {
  * @param {number} target
  * @return {number[]}
  */
-const twoSum2 = function(numbers: number[], target: number) {};
+const twoSum2 = function(numbers: number[], target: number) {
+  let leftIndex = 0;
+  let rightIndex = numbers.length - 1;
 
-console.log(twoSum([2, 7, 11, 15], 9));
+  while (leftIndex < rightIndex) {
+    const sum = numbers[leftIndex] + numbers[rightIndex];
+
+    if (sum > target) {
+      rightIndex--;
+    } else if (sum < target) {
+      leftIndex++;
+    } else {
+      return [leftIndex + 1, rightIndex + 1];
+    }
+  }
+};
+
+console.log(twoSum2([2, 7, 11, 15], 9));
