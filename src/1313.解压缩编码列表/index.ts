@@ -16,7 +16,7 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-const decompressRLElist = function(nums: number[]) {
+const decompressRLElist = function (nums: number[]) {
   function genArr(item: number, len: number) {
     return new Array(len).fill(item);
   }
@@ -33,3 +33,4 @@ const decompressRLElist = function(nums: number[]) {
 };
 
 console.log(decompressRLElist([1, 2, 3, 4])); // [2,4,4,4]
+console.log(decompressRLElist([1, 2, 3, 4]));
