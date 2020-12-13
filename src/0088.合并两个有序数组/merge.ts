@@ -33,9 +33,55 @@
 /**
  Do not return anything, modify nums1 in-place instead.
  */
-export function merge(nums1: number[], m: number, nums2: number[], n: number) {}
+export function merge(nums1: number[], m: number, nums2: number[], n: number) {
+  let i = nums1.length - 1;
+  while (true) {
+    if (nums1[i] === 0) {
+      nums1.pop();
+      i--;
+      continue;
+    }
+    break;
+  }
 
-function insetAndKeepSize(arr: number[], index: number, item: number) {
+  let item1: number | undefined;
+  let item2: number | undefined;
+
+  let insetIndex = 0;
+
+  while (true) {
+    if (typeof item2 === "undefined") {
+      item2 = nums2.shift();
+      if (typeof item2 === "undefined") {
+        break;
+      }
+    }
+
+    item1 = nums1[insetIndex];
+    if (typeof item1 === "undefined") {
+      nums1[insetIndex] = item2;
+      insetIndex++;
+      item2 = undefined;
+      continue;
+    }
+    if (item2 >= item1) {
+      insetIndex++;
+    } else {
+      inset(nums1, insetIndex, item2);
+      item2 = undefined;
+    }
+  }
+
+  let j = m + n - 1;
+  while (true) {
+    if (typeof nums1[j] === "undefined") {
+      nums1[j] = 0;
+      j--;
+      continue;
+    }
+    break;
+  }
+}
+function inset(arr: number[], index: number, item: number) {
   arr.splice(index, 0, item);
-  arr.pop();
 }
