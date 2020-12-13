@@ -25,14 +25,7 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-const containsDuplicate = function(nums: number[]) {
-  if (!nums.length) return false;
-  const m = new Map<number, boolean>();
-  for (let i = 0; i < nums.length; i++) {
-    if (m.has(nums[i])) {
-      return true;
-    }
-    m.set(nums[i], true);
-  }
-  return false;
-};
+export function containsDuplicate(nums: number[]): boolean {
+  const numsSet = new Set(nums);
+  return numsSet.size !== nums.length;
+}
