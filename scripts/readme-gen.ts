@@ -7,7 +7,7 @@ async function gen(type: "completed" | "todo") {
   const str = dirs
     .map((item) => {
       if (type === "todo") {
-        return `- [] ${item}`;
+        return `- [ ] ${item}`;
       }
       return `- [x] ${item}`;
     })
