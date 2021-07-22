@@ -6,7 +6,8 @@
   "author": "liaoyinglong <vigossliao@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "readme-gen": "esno ./scripts/readme-gen.ts"
+    "readme-gen": "esno ./scripts/readme-gen.ts",
+    "test": "jest --onlyChanged"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
