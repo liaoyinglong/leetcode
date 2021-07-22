@@ -5,6 +5,9 @@
   "repository": "https://github.com/liaoyinglong/leetcode.git",
   "author": "liaoyinglong <vigossliao@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "readme-gen": "esno ./scripts/readme-gen.ts"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "jest": "^27.0.4",
