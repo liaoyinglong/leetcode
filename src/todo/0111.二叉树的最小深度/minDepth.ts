@@ -27,12 +27,13 @@ export function minDepth(root: TreeNode | null, min = 1): number {
     return min;
   }
 
-  const leftMin = minDepth(root.left, min + 1);
   const rightMin = minDepth(root.right, min + 1);
 
   if (!root.left) {
     return rightMin;
   }
+
+  const leftMin = minDepth(root.left, min + 1);
   if (!root.right) {
     return leftMin;
   }
