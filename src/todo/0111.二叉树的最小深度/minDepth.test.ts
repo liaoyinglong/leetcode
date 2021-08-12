@@ -1,9 +1,9 @@
 import { minDepth } from "./minDepth";
-import { arrToTree } from "../../shared/arrToTree/arrToTree";
+import { createBinaryTree } from "../../shared/createBinaryTree/createBinaryTree";
 
 describe("minDepth", function () {
   it("minDepth case1", () => {
-    expect(minDepth(arrToTree([3, 9, 20, null, null, 15, 7]))).toBe(2);
+    expect(minDepth(createBinaryTree([3, 9, 20, null, null, 15, 7]))).toBe(2);
   });
 
   it("minDepth case2", () => {
@@ -33,6 +33,6 @@ describe("minDepth", function () {
   });
 
   it("case 3 ", () => {
-    expect(minDepth(arrToTree([]))).toBe(0);
+    expect(minDepth(createBinaryTree([]))).toBe(0);
   });
 });
