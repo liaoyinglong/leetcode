@@ -6,6 +6,7 @@
 
  说明：叶子节点是指没有子节点的节点。
  */
+import { TreeNode } from "../../shared/createBinaryTree/createBinaryTree";
 
 export function minDepth(root: TreeNode | null, min = 1): number {
   // if (!root) {

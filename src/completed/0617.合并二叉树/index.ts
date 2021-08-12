@@ -40,7 +40,7 @@ interface TreeNode {
  * @param {TreeNode} t2
  * @return {TreeNode}
  */
-var mergeTrees = function(t1: TreeNode | null, t2: TreeNode | null) {
+export var mergeTrees = function (t1: TreeNode | null, t2: TreeNode | null) {
   if (t1 && t2) {
     t1.val = t1.val + t2.val;
     t1.left = mergeTrees(t1.left, t2.left);
